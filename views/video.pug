@@ -1,0 +1,7 @@
+extends layout
+
+block content
+	iframe(width='640', height='480', src='https://www.youtube.com/embed/' + videoId)
+
+	each val in items
+		p #{val.snippet.displayMessage}

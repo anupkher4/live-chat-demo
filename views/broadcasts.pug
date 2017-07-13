@@ -1,0 +1,8 @@
+extends layout
+
+block content
+	h1= 'Click on one of the links'
+	
+	each val in json
+		br
+		a(href='/video/' + val.id.videoId) #{val.id.videoId}
