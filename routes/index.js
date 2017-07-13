@@ -21,7 +21,7 @@ var scopes = [
 ];
 
 var clientId = "672840972805-p5qund3ok5jl2jp5poo3s8c3vlkutup4.apps.googleusercontent.com";
-var callbackUrl = "http://localhost:3000/oauth2callback";
+var callbackUrl = "https://vast-river-80043.herokuapp.com/oauth2callback";
 var oauthurl = "http://accounts.google.com/o/oauth2/auth?client_id=" + clientId + "&redirect_uri=" + encodeURI(callbackUrl) + "&scope=https://www.googleapis.com/auth/youtube&response_type=code&access_type=offline";
 
 /* GET home page. */
