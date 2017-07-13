@@ -6,10 +6,13 @@ var google = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
 var storage = require('node-persist');
 
+// https://vast-river-80043.herokuapp.com
+// http://localhost:3000/oauth2callback
+
 var oauth2Client = new OAuth2(
   '672840972805-p5qund3ok5jl2jp5poo3s8c3vlkutup4.apps.googleusercontent.com',
   'X9eNLtMMyjI6p-swQuz8Gieb',
-  'http://localhost:3000/oauth2callback'
+  'https://vast-river-80043.herokuapp.com/oauth2callback'
 );
 
 // generate a url that asks permissions for Google+ and Google Calendar scopes
@@ -29,43 +32,6 @@ router.get('/', function(req, res, next) {
 // Handle OAuth2 callback
 router.get('/oauth2callback', function(req, res, next) {
 	let authCode = req.query.code
-	console.log(`Callback code ${authCode}`);
-
-	// const postData = querystring.stringify({
-	// 	client_id: "672840972805-p5qund3ok5jl2jp5poo3s8c3vlkutup4.apps.googleusercontent.com",
-	// 	client_secret: 'X9eNLtMMyjI6p-swQuz8Gieb',
-	// 	code: authCode,
-	// 	redirect_uri: "http://localhost:3000/oauth2callback",
-	// 	grant_type: 'authorization_code'
-	// });
-
-	// const options = {
-	// 	hostname: 'www.googleapis.com',
-	// 	path: '/oauth2/v4/token',
-	// 	method: 'POST',
-	// 	headers: {
-	// 		'Content-Type': 'application/x-www-form-urlencoded',
-	// 		'Content-Length': Buffer.byteLength(postData)
-	// 	}
-	// };
-
-	// const request = http.request(options, function(response) {
-	// 	console.log(`STATUS: ${response.statusCode}`);
-	// 	console.log(`HEADERS: ${JSON.stringify(response.headers)}`);
-	// 	response.setEncoding('utf8');
-	// 	response.on('data', function(data) {
-	// 		console.log(`BODY: ${data}`);
-	// 	});
-	// 	response.on('end', function() {
-	// 		console.log('No more data in response.');
-	// 	});
-	// });
-
-	// request.on('error', function(e) {
-	// 	console.error(`problem with request: ${e.message}`);
-	// });
-
-	// request.end();
 
 	oauth2Client.getToken(authCode, function(err, tokens) {
 		if (!err) {
