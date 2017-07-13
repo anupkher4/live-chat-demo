@@ -37,7 +37,7 @@ router.get('/:videoId', function(req, res, next) {
 				request(newOptions, function(error, response, body) {
 					var chatInfo = JSON.parse(body);
 					var chatItems = chatInfo.items;
-					res.render('video', { items: chatItems, chatId: liveChatId });
+					res.render('video', { items: chatItems, chatId: liveChatId , videoId: videoId});
 				});
 
 			});
